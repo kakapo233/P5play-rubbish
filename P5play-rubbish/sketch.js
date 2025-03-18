@@ -1,4 +1,5 @@
-let ball, floor, wall1, wall2, ceiling, goal;
+let ball, floor, wall1, wall2, ceiling, goal, scoreSprite, scoreChange;
+let score = 0;
 let speedY=10;
 let speedX=10;
 let speed2Y=10;
@@ -8,6 +9,8 @@ let recta1, recta2, recta3, recta4, recta5, recta6, recta7, recta8, recta9, rect
 function setup() {
 	new Canvas(500, 500);
 	displayMode('centered');
+	let iOrange = color(255, 79, 0);
+	let iOrangeInverse = color(0, 176, 255);
 
 	floor = new Sprite(250, 498.5, 500, 5, 'static');
 	floor.bounciness = 0.5;
@@ -25,10 +28,12 @@ function setup() {
 
 	goal = new Sprite(250, 2.5, 100, 5, 'static')
 
-	ball = new Sprite(100, 100, 50, 50,);
+	ball = new Sprite(100, 100, 45, 45,);
 	ball.collision = 'k';
 	ball.rotation = 45;
-
+	ball.stroke = iOrange;
+	ball.color = iOrangeInverse;
+	ball.strokeWeight = 5;
 
 	recta1= new Sprite(175, 175, 50, 50, 'dynamic');
 	recta2= new Sprite(175, 225, 50, 50, 'dynamic');
@@ -46,6 +51,7 @@ function setup() {
 	recta14= new Sprite(325, 225, 50, 50, 'dynamic');
 	recta15= new Sprite(325, 275, 50, 50, 'dynamic');
 	recta16= new Sprite(325, 325, 50, 50, 'dynamic');
+
 	recta1.color = 'red';
 	recta2.color = 'orange';
 	recta3.color = 'yellow';
@@ -62,64 +68,90 @@ function setup() {
 	recta14.color = 'white';
 	recta15.color = 'purple';
 	recta16.color = 'black';
-}
 
+	scoreSprite = new Sprite(30, 30, 1, 1, 'none');
+	scoreSprite.color = 'skyblue'
+	scoreSprite.textSize = 40;
+	scoreSprite.layer = 1;
+	scoreSprite.stroke = 'skyblue'
+}
 
 function draw() {
 	background('skyblue');
-	
 
 	if (mouse.presses()) {
 		ball.speed = 10;
 		ball.moveTowards(mouse, 0.15);
-	}
+		}
 	
+		function scoreChange(){
+			score+=1;
+		}
+
 	if (recta1.collides(goal)){
 		recta1.remove();
-	}
+		scoreChange();
+		}
 	if (recta2.collides(goal)){
 		recta2.remove();
-		   }
+		scoreChange();
+		}
 	if (recta3.collides(goal)){
 		recta3.remove();
-			   }
+		scoreChange();
+		}
 	if (recta4.collides(goal)){
 		recta4.remove();
-				   }
+		scoreChange();
+		}
 	if (recta5.collides(goal)){
 		recta5.remove();
-	}
+		scoreChange();
+		}
 	if (recta6.collides(goal)){
 		recta6.remove();
-		   }
+		scoreChange();
+		}
 	if (recta7.collides(goal)){
 		recta7.remove();
-			   }
+		scoreChange();
+		}
 	if (recta8.collides(goal)){
 		recta8.remove();
-				   }
+		scoreChange();
+		}
 	if (recta9.collides(goal)){
 		recta9.remove();
-	}
+		scoreChange();
+		}
 	if (recta10.collides(goal)){
 		recta10.remove();
-		   }
+		scoreChange();
+		}
 	if (recta11.collides(goal)){
 		recta11.remove();
-			   }
+		scoreChange();
+		}
 	if (recta12.collides(goal)){
 		recta12.remove();
-				   }
+		scoreChange();
+		}
 	if (recta13.collides(goal)){
 		recta13.remove();
+		scoreChange();
 	}
 	if (recta14.collides(goal)){
 		recta14.remove();
-		   }
+		scoreChange();
+		}
 	if (recta15.collides(goal)){
 		recta15.remove();
-			   }
+		scoreChange();
+		}
 	if (recta16.collides(goal)){
 		recta16.remove();
-				   }
+		scoreChange();
+		}
+		scoreSprite.text = score;
+		
 }
