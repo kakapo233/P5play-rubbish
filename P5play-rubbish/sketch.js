@@ -1,4 +1,4 @@
-let ball, floor, wall1, wall2, ceiling, goal, scoreSprite, scoreChange;
+let ball, floor, wall1, wall2, ceiling, goal, scoreSprite, scoreChange, endScreen, eScreen;
 let score = 0;
 let speedY=10;
 let speedX=10;
@@ -81,6 +81,13 @@ function setup() {
 	timerSprite.textSize = 40;
 	timerSprite.layer = 1;
 	timerSprite.stroke = 'skyblue'
+
+	function endScreen(){
+		eScreen = new Sprite(250, 250, 1, 1, 'none');
+		eScreen.color = 'skyblue';
+		eScreen.text = score/world.realTime;
+		eScreen.textSize = 40;
+	}
 }
 
 function draw() {
@@ -162,4 +169,9 @@ function draw() {
 
 		scoreSprite.text = score;
 		timerSprite.text = round(world.realTime, [1]);
+
+	if (score==2){
+		endScreen();
+	}
+
 }
