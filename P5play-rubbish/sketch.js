@@ -11,6 +11,7 @@ function setup() {
 	displayMode('centered');
 	let iOrange = color(255, 79, 0);
 	let iOrangeInverse = color(0, 176, 255);
+	allSprites.layer = 0;
 
 	floor = new Sprite(250, 498.5, 500, 5, 'static');
 	floor.bounciness = 0.5;
@@ -74,6 +75,12 @@ function setup() {
 	scoreSprite.textSize = 40;
 	scoreSprite.layer = 1;
 	scoreSprite.stroke = 'skyblue'
+
+	timerSprite = new Sprite(440, 30, 1, 1, 'none');
+	timerSprite.color = 'skyblue'
+	timerSprite.textSize = 40;
+	timerSprite.layer = 1;
+	timerSprite.stroke = 'skyblue'
 }
 
 function draw() {
@@ -152,6 +159,7 @@ function draw() {
 		recta16.remove();
 		scoreChange();
 		}
+
 		scoreSprite.text = score;
-		
+		timerSprite.text = round(world.realTime, [1]);
 }
