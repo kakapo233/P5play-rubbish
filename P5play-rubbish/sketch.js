@@ -85,7 +85,7 @@ function setup() {
 	function endScreen(){
 		eScreen = new Sprite(250, 250, 1, 1, 'none');
 		eScreen.color = 'skyblue';
-		eScreen.text = score/world.realTime;
+		eScreen.text = score/world.realTime, [1];
 		eScreen.textSize = 40;
 	}
 }
@@ -170,7 +170,7 @@ function draw() {
 		scoreSprite.text = score;
 		timerSprite.text = round(world.realTime, [1]);
 
-	if (score==2){
+	if (score2 === 16){
 		endScreen();
 	}
 
